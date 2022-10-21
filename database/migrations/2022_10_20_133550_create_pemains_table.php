@@ -15,7 +15,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pemains', function (Blueprint $table) {
-            $table->id('id_pemain');
+            $table->id('id');
+            $table->foreignId('statistik_id');
             $table->string('nama')->unique();
             $table->string('slug');
             $table->integer('gaji');

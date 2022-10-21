@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pemain;
 use Illuminate\Http\Request;
+use App\Models\Statistik;
 
 class PemainController extends Controller
 {
@@ -51,10 +52,12 @@ class PemainController extends Controller
      */
     public function show($slug)
     {
+        $pemain = Pemain::firstWhere('slug',$slug);
         return view('conten.dashboard.statistik',[
-            'data' => Pemain::firstWhere('slug',$slug),
-            'page' => 'Daftar Pemain',
-            'TitlePage' => 'Pemain',
+            'DataStatistik' => Statistik::firstWhere('id',$pemain->statistik_id),
+            'page' => $slug,
+            'TitlePage' => $slug,
+            'DataPemain' => $pemain,
             'icon' => 'person-fill'
         ]);
         

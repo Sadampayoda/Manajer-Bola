@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('statistiks', function (Blueprint $table) {
-            $table->id('id_statistik');
-            $table->foreignId('id_pemain');
+            $table->id('id');
             $table->integer('tekel');
             $table->integer('passing');
             $table->integer('shooting');

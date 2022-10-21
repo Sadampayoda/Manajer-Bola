@@ -13,8 +13,8 @@ class Pemain extends Model
     protected $guarded = ['id_pemain'];
     
 
-    public function statistik()
+    public function Statistik()
     {
-        return $this->hasOne(Statistik::class);
+        return $this->belongsTo(Statistik::class);
     }
 }

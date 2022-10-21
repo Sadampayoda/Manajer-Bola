@@ -24,8 +24,29 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        
         Statistik::create([
-            'id_pemain' => 1,
+            'tekel' => 60,
+            'passing' => 98,
+            'shooting' => 80,
+            'speed' => 80,
+            'dribling' => 99 
+        ]);
+        Statistik::create([
+            'tekel' => 60,
+            'passing' => 98,
+            'shooting' => 80,
+            'speed' => 80,
+            'dribling' => 99 
+        ]);
+        Statistik::create([
+            'tekel' => 60,
+            'passing' => 98,
+            'shooting' => 80,
+            'speed' => 80,
+            'dribling' => 99 
+        ]);
+        Statistik::create([
             'tekel' => 60,
             'passing' => 98,
             'shooting' => 80,
@@ -34,6 +55,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Pemain::create([
+            'statistik_id' => 1,
             'nama' => 'Leonel Messi',
             'slug' => 'Leonel-Messi',
             'gaji' => 1000000,
@@ -43,6 +65,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Pemain::create([
+            'statistik_id' => 2,
             'nama' => 'Ter stegen',
             'slug' => 'Ter-stegen',
             'gaji' => 100000,
@@ -52,6 +75,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Pemain::create([
+            'statistik_id' => 3,
             'nama' => 'frenki de jong',
             'slug' => 'frenki-de-jong',
             'gaji' => 200000,
@@ -61,6 +85,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Pemain::create([
+            'statistik_id' => 4,
             'nama' => 'Cristiano Ronaldo',
             'slug' => 'Cristiano-Ronaldo',
             'gaji' => 900000,
