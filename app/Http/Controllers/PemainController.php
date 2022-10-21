@@ -14,12 +14,12 @@ class PemainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {    
         return view('conten.dashboard.pemain',[
             'page' => 'Daftar Pemain',
             'TitlePage' => 'Pemain',
             'icon' => 'person-fill',
-            'data' => Pemain::all()
+            'data' => Pemain::latest()->searchPemain(request('nama'))->get()
         ]);
     }
 

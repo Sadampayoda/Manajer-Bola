@@ -3,12 +3,12 @@
 @section('conten')
 <div class="row mt-5 ms-5">
     <div class="col mb-4 border-bottom">
-        <div class="form">
+        <form method="GET">
             <div class="input-group mb-3 ">
-                <input type="text" name="search" class="form-control" placeholder="Search Pemain kamu !"  >
-                <button class="input-group-text btn btn-outline-dark " id="basic-addon2">Search Pemain</button>
+                <input type="text" name="nama" class="form-control" placeholder="Search Pemain kamu !"  >
+                <button class="input-group-text btn btn-outline-dark " id="basic-addon2" type="submit">Search Pemain</button>
             </div>
-        </div>
+        </form>
     </div>
     @foreach ($data as $item)
         <div class="card mb-3 ms-5" style="max-width: 900px;">
