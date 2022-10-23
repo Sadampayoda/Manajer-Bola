@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pemain;
+use App\Models\Pelatih;
 use Illuminate\Http\Request;
-use App\Models\Statistik;
+use Illuminate\Support\Facades\DB;
 
-class PemainController extends Controller
+class PelatihController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,14 @@ class PemainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    
-        return view('conten.dashboard.pemain.pemain',[
-            'page' => 'Daftar Pemain',
-            'TitlePage' => 'Pemain',
+    {
+        
+         
+        return view('conten.dashboard.pelatih.index',[
+            'page' => 'Daftar Pelatih',
+            'TitlePage' => 'Pelatih',
             'icon' => 'person-fill',
-            'data' => Pemain::latest()->searchPemain(request('nama'))->get()
+            'data' => Pelatih::latest()->get()
         ]);
     }
 
@@ -47,30 +49,29 @@ class PemainController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pemain  $pemain
+     * @param  \App\Models\Pelatih  $pelatih
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
     {
-        $pemain = Pemain::firstWhere('slug',$slug);
-        return view('conten.dashboard.pemain.statistik',[
-            'DataStatistik' => Statistik::firstWhere('id',$pemain->statistik_id),
-            'page' => $slug,
-            'TitlePage' => $slug,
-            'DataPemain' => $pemain,
-            'icon' => 'person-fill'
+        $data = DB::table('pelatihs')
+        ->join('taktiks','taktiks.pelatih_id','=','pelatihs.id')->join('detil_taktiks','taktiks.DetilTaktik_id','=','detil_taktiks.id')->where('slug',$slug)
+        ->get();
+        return view('conten.dashboard.pelatih.statistiks',[
+            'page' => 'Statistik'.$slug,
+            'TitlePage' => 'Pelatih'.$slug,
+            'icon' => 'person-fill',
+            'data' => $data
         ]);
-        
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pemain  $pemain
+     * @param  \App\Models\Pelatih  $pelatih
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pemain $pemain)
+    public function edit(Pelatih $pelatih)
     {
         //
     }
@@ -79,10 +80,10 @@ class PemainController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pemain  $pemain
+     * @param  \App\Models\Pelatih  $pelatih
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pemain $pemain)
+    public function update(Request $request, Pelatih $pelatih)
     {
         //
     }
@@ -90,10 +91,10 @@ class PemainController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pemain  $pemain
+     * @param  \App\Models\Pelatih  $pelatih
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pemain $pemain)
+    public function destroy(Pelatih $pelatih)
     {
         //
     }

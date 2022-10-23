@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PemainController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PelatihController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[DashboardController::class,'index']);
+
+
 Route::resource('daftar-pemain',PemainController::class);
+Route::resource('daftar-pelatih',PelatihController::class);

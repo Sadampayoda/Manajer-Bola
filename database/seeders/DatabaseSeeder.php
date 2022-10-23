@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Pelatih;
 use Illuminate\Database\Seeder;
 use App\Models\Pemain;
 use App\Models\Statistik;
@@ -93,5 +95,11 @@ class DatabaseSeeder extends Seeder
             'kondisi' => 'sehat',
             'posisi' => 'penyerang'
         ]);
+
+        // Pelatih dan taktik
+
+        
+        
     }
+
 }
