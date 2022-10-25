@@ -21,3 +21,4 @@ Route::get('/',[DashboardController::class,'index']);
 
 Route::resource('daftar-pemain',PemainController::class);
 Route::resource('daftar-pelatih',PelatihController::class);
+Route::resource('daftar-club', ClubController::class);
