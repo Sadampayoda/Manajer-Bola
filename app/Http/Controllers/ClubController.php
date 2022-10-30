@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Club;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClubController extends Controller
 {
@@ -14,11 +15,14 @@ class ClubController extends Controller
      */
     public function index()
     {
+        $data = DB::table('clubs')
+        ->join('stadions','clubs.id','=','stadions.club_id')
+        ->get();
         return view('conten.dashboard.club.index',[
             'page' => 'Daftar Club',
             'TitlePage' => 'Club',
             'icon' => 'person-fill',
-            'data' => Club::latest()->get()
+            'data' => $data
         ]);
     }
 
