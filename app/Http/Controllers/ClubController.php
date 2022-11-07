@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Club;
+use App\Models\User;
+use App\Models\DetilClub;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,7 +35,7 @@ class ClubController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -44,7 +46,7 @@ class ClubController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -53,9 +55,15 @@ class ClubController extends Controller
      * @param  \App\Models\Club  $club
      * @return \Illuminate\Http\Response
      */
-    public function show(Club $club)
+    public function show($image)
     {
-        //
+        
+        return view('conten.dashboard.club.buy',[
+            'page' => 'Daftar Club',
+            'TitlePage' => 'Club',
+            'icon' => 'person-fill',
+            'data' => Club::firstwhere('image',$image)
+        ]);
     }
 
     /**

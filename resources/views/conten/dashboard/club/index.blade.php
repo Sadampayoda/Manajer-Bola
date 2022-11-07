@@ -20,6 +20,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$item->image}}</h5>
                         <p class="card-text">Club asal dari {{$item->nasional}} dengan mempunyai stadion bernama {{$item->nama}}</p>
+                        @if (auth()->user())
+                            <a href="/daftar-club/{{$item->image}}" class="btn btn-dark">Beli Club </a>
+                        @endif
                     </div>
                 </div>
             </div>

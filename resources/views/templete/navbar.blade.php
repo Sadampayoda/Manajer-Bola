@@ -6,18 +6,30 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">keluar</a>
-          </li>
+          
           @if (auth()->user())
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Welcome {{ auth()->user()->name }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">logout</a></li>
+            </ul>
+          </li>
           @else
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">keluar</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
             </li>
           @endif
+
+           
+          
           
         </ul>
       </div>
