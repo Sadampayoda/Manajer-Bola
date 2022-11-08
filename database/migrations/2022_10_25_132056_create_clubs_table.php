@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('nama');
             $table->string('nasional');
+            $table->integer('harga');
             $table->timestamps();
         });
     }

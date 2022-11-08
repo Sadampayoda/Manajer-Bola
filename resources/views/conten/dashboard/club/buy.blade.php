@@ -13,7 +13,7 @@
             <img src="{{asset('/image/pemain-bola.jpg')}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{$data->image}}</h5>
-              <p class="card-text">Pelatih berasal dari {{$data->nasional}}</p>
+              <p class="card-text">club berasal dari {{$data->nasional}} ,Club ini seharga {{$data->harga}}$</p>
             </div>
         </div>
     </div>

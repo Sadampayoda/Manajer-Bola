@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\DetilClub;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use mysqli;
 
 class ClubController extends Controller
 {
@@ -46,6 +47,29 @@ class ClubController extends Controller
      */
     public function store(Request $request)
     {
+        $CekCLubUser = DB::table('detil_clubs')
+        ->where('club_id', '=', auth()->user()->id)
+        ->get()->count();
+        $DataClub = Club::find($request);
+        if($CekCLubUser > 0){
+            return redirect('/daftar-club')->with('already','your already have club');
+        }
+        if(auth()->user()->money < $DataClub[0]->harga){
+            return redirect('/daftar-club')->with('undermoney','you have money less from price club');
+        }
+        
+
+        DetilClub::create([
+            'user_id' => auth()->user()->id,
+            'club_id' => $DataClub[0]->id
+        ]);
+        $BuySuccess = [
+            'money' => auth()->user()->money - $DataClub[0]->harga
+        ];
+
+        DB::table('users')->where('id',auth()->user()->id)->update($BuySuccess);
+
+        return redirect('/daftar-club')->with('success-buy','congratulation you have new club');
         
     }
 

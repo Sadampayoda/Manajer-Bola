@@ -9,6 +9,12 @@ class DetilClub extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'club_id'
+    ];
+    protected $with = ['user'];
+
 
     public function Club(){
         return $this->belongsTo(Club::class,'club_id');

@@ -13,7 +13,7 @@
               Welcome {{ auth()->user()->name }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Money : <p class="text-warning">{{auth()->user()->money}}$<p></a></li>
               <li><a class="dropdown-item" href="#">Profile</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">logout</a></li>

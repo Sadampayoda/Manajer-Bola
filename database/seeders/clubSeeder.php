@@ -18,12 +18,14 @@ class clubSeeder extends Seeder
         Club::create([
             'image' => 'barcelona',
             'nama' => 'Barcelona',
-            'nasional' => 'Spanyol'
+            'nasional' => 'Spanyol',
+            'harga' => 20
         ]);
         Club::create([
             'image' => 'Real-madrid',
             'nama' => 'Real Madrid',
-            'nasional' => 'Spanyol'
+            'nasional' => 'Spanyol',
+            'harga' => 25
         ]);
 
     }
