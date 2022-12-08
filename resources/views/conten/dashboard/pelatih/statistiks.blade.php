@@ -26,7 +26,7 @@
                             <img src='{{asset("/image/$item->formasi.jpeg")}}' class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->formasi}}</h5>
-                            <p class="card-text">Formasi {{$item->formasi}} digunakan untuk taktikal {{$item->taktik}} </p>
+                                <p class="card-text">Formasi {{$item->formasi}} digunakan untuk taktikal {{$item->taktik}} </p>
                             </div>
                         </div>
                     </div>

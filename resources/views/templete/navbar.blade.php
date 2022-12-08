@@ -8,13 +8,21 @@
         <ul class="navbar-nav ms-auto">
           
           @if (auth()->user())
+          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Welcome {{ auth()->user()->name }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Money : <p class="text-warning">{{auth()->user()->money}}$<p></a></li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              @if (!Request::is('profile'))
+                <li><a class="dropdown-item" href="/profile">Profile</a></li>  
+              @endif
+              @if (!Request::is('/'))
+                <li>
+                  <a class="dropdown-item" href="/">Home</a>
+                </li>
+              @endif
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">logout</a></li>
             </ul>

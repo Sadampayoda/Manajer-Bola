@@ -3,6 +3,21 @@
 @section('conten')
 
 <div class="row mt-5 ms-5">
+    @if (session()->has('alreadyy'))
+        <div class="alert alert-danger text-center" role="alert">
+            {{session('alreadyy')}}
+        </div>
+    @endif
+    @if (session()->has('undermoneyy'))
+        <div class="alert alert-danger text-center" role="alert">
+            {{session('undermoneyy')}}
+        </div>
+    @endif
+    @if (session()->has('success-buyy'))
+        <div class="alert alert-success text-center" role="alert">
+            {{session('success-buyy')}}
+        </div>
+    @endif
     <div class="col mb-4 border-bottom">
         <form method="GET">
             <div class="input-group mb-3 ">
@@ -24,7 +39,13 @@
                         <form method="GET" action="/daftar-pelatih/{{$item->slug}}">
                             <button class="btn btn-outline-dark">Lihat Statistik Pelatih</button >
                         </form>
-                        
+                        @if (auth()->user())
+                            <form method="POST" action="/daftar-pelatih">
+                                @csrf
+                                <input type="hidden" name="pelatih" value="{{$item->id}}">
+                                <button class="btn btn-outline-dark">Beli Pelatih</button >
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>

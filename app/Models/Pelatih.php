@@ -10,8 +10,13 @@ class Pelatih extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function taktiks()
     {
         return $this->hasMany(Taktik::class,'pelatih_id');
+    }
+    public function DetilClub(){
+        return $this->hasOne(DetilClub::class);
     }
 }

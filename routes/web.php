@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BuyclubController;
+// use App\Http\Controllers\BuyclubController;
 use App\Http\Controllers\BuyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PemainController;
@@ -9,6 +9,7 @@ use App\Http\Controllers\PelatihController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
 
@@ -23,15 +24,27 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
+Route::middleware('auth')->group(function(){
+    Route::get('/buy{club}',[BuyController::class,'BuyClub']);
+    Route::resource('profile',ProfileController::class);
+});
+
+
+//Netral
 Route::get('/',[DashboardController::class,'index']);
-
-
 Route::resource('daftar-pemain',PemainController::class);
 Route::resource('daftar-pelatih',PelatihController::class);
 Route::resource('daftar-club', ClubController::class);
 
-Route::get('/login',[LoginController::class,'index']);
-Route::post('/login',[LoginController::class,'authenticate']);
-Route::get('/register',[RegisterController::class,'index']);
-Route::post('/register',[RegisterController::class,'newAccount']);
-Route::post('/buy',[BuyController::class,'BuyClub'])->middleware('auth');
+
+Route::middleware('guest')->group(function(){
+    
+    Route::get('/login',[LoginController::class,'index']);
+    Route::post('/login',[LoginController::class,'authenticate']);
+    Route::get('/register',[RegisterController::class,'index']);
+    Route::post('/register',[RegisterController::class,'newAccount']);
+
+});
+
+
+

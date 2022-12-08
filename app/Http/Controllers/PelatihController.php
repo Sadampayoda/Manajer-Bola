@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetilPelatih;
 use App\Models\Pelatih;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,7 +45,26 @@ class PelatihController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cekUser = DB::table('detil_pelatihs')->where('user_id',' = ',auth()->user()->id)->get()->count();
+        $dataPelatih = Pelatih::find($request);
+        if($cekUser > 0){
+            return redirect('/daftar-pelatih')->with('alreadyy','your already have pelatih');
+        }
+        if(auth()->user()->money < $dataPelatih[0]->value)
+        {
+            return redirect('/daftar-pelatih')->with('undermoneyy','you have money less from price pelatih');
+        }
+
+        DB::table('users')->where('id',auth()->user()->id)->update([
+            'money' => auth()->user()->money - $dataPelatih[0]->value
+        ]);
+
+        DetilPelatih::create([
+            'user_id' => auth()->user()->id,
+            'pelatih_id' => $dataPelatih[0]->id
+        ]);
+
+        return redirect('/daftar-pelatih')->with('success-buyy','congratulation you have new club');
     }
 
     /**

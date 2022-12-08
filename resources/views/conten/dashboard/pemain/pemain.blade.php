@@ -10,6 +10,22 @@
             </div>
         </form>
     </div>
+    @if (session()->has('limit'))
+        <div class="alert alert-danger text-center" role="alert">
+            {{session('limit')}}
+        </div>
+    @endif
+    @if (session()->has('new player'))
+        <div class="alert alert-success text-center" role="alert">
+            {{session('new player')}}
+        </div>
+    @endif
+    @if (session()->has('player already'))
+        <div class="alert alert-danger text-center" role="alert">
+            {{session('player already')}}
+        </div>
+    @endif
+
     @foreach ($data as $item)
         <div class="card mb-3 ms-5" style="max-width: 900px;">
             <div class="row g-0">
@@ -23,6 +39,12 @@
                         <form method="GET" action="/daftar-pemain/{{$item->slug}}">
                             <button class="btn btn-outline-dark">Lihat Statistik Pemain</button >
                         </form>
+                        @if (auth()->user())
+                            <form action="/daftar-pemain" method="POST">
+                                @csrf
+                                <button class="btn btn-outline-dark" name="pemain" value="{{$item->nama}}">Beli Pemain</button>
+                            </form>
+                        @endif
                         
                     </div>
                 </div>

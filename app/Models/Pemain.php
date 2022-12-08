@@ -19,6 +19,10 @@ class Pemain extends Model
         return $this->belongsTo(Statistik::class,'statistik_id');
     }
 
+    public function DetilPemain(){
+        return $this->hasMany(DetilPemain::class);
+    }
+
     public function scopeSearchPemain($query,$nama)
     {
         $query->when($nama ?? false , function($query,$nama){

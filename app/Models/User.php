@@ -25,7 +25,7 @@ class User extends Authenticatable
     //     'admin'
     // ];
 
-    protected $guarded = [''];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -48,5 +48,11 @@ class User extends Authenticatable
 
     public function DetilClub(){
         return $this->hasOne(DetilClub::class);
+    }
+    public function DetilPelatih(){
+        return $this->hasOne(DetilPelatih::class);
+    }
+    public function DetilPemain(){
+        return $this->hasMany(DetilPemain::class);
     }
 }
