@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Club;
 use App\Models\DetilPelatih;
 use App\Models\Pelatih;
+use App\Models\Pemain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,12 +32,46 @@ class ProfileController extends Controller
             $dataPelatih = NULL;
         }
 
+
+        $dataClubUser = DB::table('detil_clubs')
+                        ->where('user_id',auth()->user()->id)
+                        ->get();
+
+        if($dataClubUser){
+            $dataClub = Club::Firstwhere('id',$dataClubUser[0]->club_id);
+        }else{
+            $dataClub = NULL;
+        }
+
+        $dataPemainUser = DB::table('detil_pemains')
+                        ->where('user_id',auth()->user()->id)
+                        ->get();
+        if($dataPemainUser)
+        {
+            $dataPemain = DB::table('pemains')
+                            ->where('id',$dataPemainUser[0]->pemain_id)
+                            ->get();
+        // $dataPemain = Pemain::where('id',$dataPemainUser[0]->pemain_id);
+        }else
+        {
+            $dataPemain = NULL;
+        }
+        $resultData = [
+            'pelatih' => $dataPelatih,
+            'club' => $dataClub,
+            'pemain' => $dataPemain
+        ];
+
+        // return $resultData['pemain'];
+
+
+        // return $resultData['pelatih']->nama;
         
         return view('conten.profile.index',[
             'page' => auth()->user()->name,
             'TitlePage' => auth()->user()->name,
             'icon' => 'house-door',
-            'dataPelatih' => $dataPelatih
+            'data' => $resultData
         ]);
     }
 

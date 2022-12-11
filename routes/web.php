@@ -9,6 +9,7 @@ use App\Http\Controllers\PelatihController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewController;
+use App\Http\Controllers\PlaygameController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
@@ -29,6 +30,11 @@ Route::middleware('auth')->group(function(){
     Route::resource('profile',ProfileController::class);
 });
 
+Route::middleware(['auth','game'])->group(function(){
+    Route::get('/play-game',[PlaygameController::class , 'index'])->name('playgame');
+    Route::get('/play-game/{formasi}/susunan',[PlaygameController::class,'susunanPemain'])->name('susunan');
+});
+
 
 //Netral
 Route::get('/',[DashboardController::class,'index']);
@@ -39,7 +45,7 @@ Route::resource('daftar-club', ClubController::class);
 
 Route::middleware('guest')->group(function(){
     
-    Route::get('/login',[LoginController::class,'index']);
+    Route::get('/login',[LoginController::class,'index'])->name('login');
     Route::post('/login',[LoginController::class,'authenticate']);
     Route::get('/register',[RegisterController::class,'index']);
     Route::post('/register',[RegisterController::class,'newAccount']);
