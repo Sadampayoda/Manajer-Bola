@@ -36,18 +36,10 @@
             </select>
         </div>
         <div class="col">
-            <select name="gelandang-tengah" class="form-select form-select-sm" aria-label=".form-select-lg example">
-                <option selected>Gelandang tengah </option>
-                @foreach ($pemain as $item)
-                    <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col">
             <select name="gelandang-kanan" class="form-select form-select-sm" aria-label=".form-select-lg example">
                 <option selected>Gelandang kanan</option>
                 @foreach ($pemain as $item)
-                    <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
+                <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
                 @endforeach
             </select>
         </div>
@@ -60,13 +52,21 @@
             <select name="belakang-kiri" class="form-select form-select-sm" aria-label=".form-select-lg example">
                 <option selected>Belakang kiri</option>
                 @foreach ($pemain as $item)
-                    <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
+                <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
                 @endforeach
             </select>
         </div>
         <div class="col">
             <select name="belakang-tengah-kiri" class="form-select form-select-sm" aria-label=".form-select-lg example">
                 <option selected>Belakang tengah kiri</option>
+                @foreach ($pemain as $item)
+                <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col">
+            <select name="belakang-tengah" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                <option selected>Belakang tengah </option>
                 @foreach ($pemain as $item)
                     <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
                 @endforeach

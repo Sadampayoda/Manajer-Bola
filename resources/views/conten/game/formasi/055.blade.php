@@ -9,16 +9,17 @@
         </select>
     </div>
     <div class="col">
-        <select name="penyerang-tengah" class="form-select form-select-sm" aria-label=".form-select-lg example">
+        <select name="penyerang" class="form-select form-select-sm" aria-label=".form-select-lg example">
             <option selected>Penyerang tengah</option>
             @foreach ($pemain as $item)
-                <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
+            <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
             @endforeach
         </select>
     </div>
+    
     <div class="col">
         <select name="penyerang-kanan" class="form-select form-select-sm" aria-label=".form-select-lg example">
-            <option selected>Penyerang kanan</option>
+            <option selected>penyerang kanan</option>
             @foreach ($pemain as $item)
             <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
             @endforeach

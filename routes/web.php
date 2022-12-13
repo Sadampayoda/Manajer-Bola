@@ -30,9 +30,11 @@ Route::middleware('auth')->group(function(){
     Route::resource('profile',ProfileController::class);
 });
 
-Route::middleware(['auth','game'])->group(function(){
+Route::middleware(['auth'])->group(function(){
     Route::get('/play-game',[PlaygameController::class , 'index'])->name('playgame');
     Route::get('/play-game/{formasi}/susunan',[PlaygameController::class,'susunanPemain'])->name('susunan');
+    Route::post('play-game/{formasi}/susunan',[PlaygameController::class,'validasiSusunan'])->name('validasi-bola');
+    Route::get('/play-game/{formasi}/susunan/hasil',[PlaygameController::class,'hasilFormasi'])->name('hasil');
 });
 
 

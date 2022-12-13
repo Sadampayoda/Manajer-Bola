@@ -1,7 +1,7 @@
 <div class="row mt-4 ">
     <p class="border-bottom">Penyerang</p>
     <div class="col">
-        <select class="form-select form-select-sm" aria-label=".form-select-lg example">
+        <select name="penyerang-kiri" class="form-select form-select-sm" aria-label=".form-select-lg example">
             <option selected>Penyerang kiri</option>
             @foreach ($pemain as $item)
                 <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
@@ -9,7 +9,7 @@
         </select>
     </div>
     <div class="col">
-        <select class="form-select form-select-sm" aria-label=".form-select-lg example">
+        <select name="penyerang-tengah-kiri" class="form-select form-select-sm" aria-label=".form-select-lg example">
             <option selected>Penyerang tengah kiri</option>
             @foreach ($pemain as $item)
                 <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
@@ -17,7 +17,7 @@
         </select>
     </div>
     <div class="col">
-        <select class="form-select form-select-sm" aria-label=".form-select-lg example">
+        <select name="penyerang-tengah-kanan" class="form-select form-select-sm" aria-label=".form-select-lg example">
             <option selected>Penyerang tengah kanan</option>
             @foreach ($pemain as $item)
                 <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
@@ -25,7 +25,7 @@
         </select>
     </div>
     <div class="col">
-        <select class="form-select form-select-sm" aria-label=".form-select-lg example">
+        <select name="penyerang-kanan" class="form-select form-select-sm" aria-label=".form-select-lg example">
             <option selected>Penyerang kanan</option>
             @foreach ($pemain as $item)
                 <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
@@ -34,18 +34,18 @@
     </div>
 
     <div class="row mt-4">
-        <p class="border-bottom">tengah</p>
+        <p class="border-bottom">Gelandang</p>
         <div class="col">
-            <select class="form-select form-select-sm" aria-label=".form-select-lg example">
-                <option selected>tengah kiri</option>
+            <select name="gelandang-kiri" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                <option selected>Gelandang kiri</option>
                 @foreach ($pemain as $item)
                     <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
                 @endforeach
             </select>
         </div>
         <div class="col">
-            <select class="form-select form-select-sm" aria-label=".form-select-lg example">
-                <option selected>tengah kanan</option>
+            <select name="gelandang-kanan" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                <option selected>Gelandang kanan</option>
                 @foreach ($pemain as $item)
                     <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
                 @endforeach
@@ -57,7 +57,7 @@
     <div class="row mt-4 ">
         <p class="border-bottom">Belakang</p>
         <div class="col">
-            <select class="form-select form-select-sm" aria-label=".form-select-lg example">
+            <select name="belakang-kiri" class="form-select form-select-sm" aria-label=".form-select-lg example">
                 <option selected>Belakang kiri</option>
                 @foreach ($pemain as $item)
                     <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
@@ -65,7 +65,7 @@
             </select>
         </div>
         <div class="col">
-            <select class="form-select form-select-sm" aria-label=".form-select-lg example">
+            <select name="belakang-tengah-kiri" class="form-select form-select-sm" aria-label=".form-select-lg example">
                 <option selected>Belakang tengah kiri</option>
                 @foreach ($pemain as $item)
                     <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
@@ -73,7 +73,7 @@
             </select>
         </div>
         <div class="col">
-            <select class="form-select form-select-sm" aria-label=".form-select-lg example">
+            <select name="belakang-tengah-kanan" class="form-select form-select-sm" aria-label=".form-select-lg example">
                 <option selected>belakang tengah kanan</option>
                 @foreach ($pemain as $item)
                     <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
@@ -81,7 +81,7 @@
             </select>
         </div>
         <div class="col">
-            <select class="form-select form-select-sm" aria-label=".form-select-lg example">
+            <select name="belakang-kanan" class="form-select form-select-sm" aria-label=".form-select-lg example">
                 <option selected>belakang kanan</option>
                 @foreach ($pemain as $item)
                     <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>
@@ -92,7 +92,7 @@
     <div class="row mt-4 ">
         <p class="border-bottom">Kiper</p>
         <div class="col">
-            <select class="form-select form-select-sm" aria-label=".form-select-lg example">
+            <select name="kiper" class="form-select form-select-sm" aria-label=".form-select-lg example">
                 <option selected>Kiper</option>
                 @foreach ($pemain as $item)
                     <option value="{{$item->id}}">{{$item->nama}} | {{$item->posisi}}</option>

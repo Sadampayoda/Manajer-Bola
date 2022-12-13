@@ -71,4 +71,32 @@ class PlaygameController extends Controller
             return FALSE;
         }
     }
+
+    public function validasiSusunan(Request $request , $formasi)
+    {
+        
+        $query = new ValidasiPemainController($request);
+        $resultData = $query->formasi($formasi);
+
+        return redirect()->route('hasil',['formasi' => $formasi])->with('data',$resultData);
+        // $queryPemain = new QueryController($request['penyerang-tengah-kiri']);
+        // $penyerangTengahKiri = $queryPemain->susunanPemain();
+        // return $penyerangTengahKiri;
+    }
+
+    public function hasilFormasi($formasi)
+    {
+        if(!session('data'))
+        {
+            redirect()->route('susunan',['formasi' => $formasi]);
+        }
+        $data = session('data');
+        return view('conten.game.hasil',[
+            'page' => 'Game',
+            'TitlePage' => 'Game',
+            'icon' => 'house-door',
+            'data' => collect($data),
+            'formasi' => DetilTaktik::Firstwhere('id',$formasi)
+        ]);
+    }
 }
